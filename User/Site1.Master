@@ -301,7 +301,7 @@
                                 </li>
                                 <li>
                                     <!-- User ફોલ્ડરની બહાર મેઇન Home.aspx માટે -->
-                                    <a class="dropdown-item" href='<%= ResolveUrl("~/Home.aspx") %>'>Logout</a>
+                                    <a class="dropdown-item" href='<%= ResolveUrl("~/FirstUser/Home.aspx") %>'>Logout</a>
                                 </li>
                             </ul>
                         </div>
