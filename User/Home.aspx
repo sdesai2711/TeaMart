@@ -2,47 +2,70 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        /* Hero Banner Cards */
+        /* Top Banner Hero Cards */
         .hero-banner-card {
             position: relative;
             border-radius: 12px;
-            height: 380px;
             overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 35px 30px;
-            color: #FFFFFF;
+            height: 380px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
-        .hero-banner-tea {
-            background-image: linear-gradient(to top, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.15) 80%), url('https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=900');
+        .hero-img-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
 
-        .hero-banner-coffee {
-            background-image: linear-gradient(to top, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.15) 80%), url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=900');
+        .hero-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Dark gradient overlay on top of image */
+        .hero-img-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 15%, rgba(0, 0, 0, 0.2) 75%);
+        }
+
+        .hero-body-custom {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px 28px;
+            color: #FFFFFF;
         }
 
         .hero-title {
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 8px;
+            color: #FFFFFF;
         }
 
         .hero-desc {
             font-size: 13px;
             color: #E2E8F0;
-            max-width: 320px;
             line-height: 1.5;
             margin-bottom: 20px;
+            max-width: 320px;
         }
 
         .btn-tea {
             background-color: #27AE60;
-            color: #FFFFFF !important;
+            color: #FFFFFF;
             font-size: 13px;
             font-weight: 600;
             padding: 8px 26px;
@@ -51,15 +74,17 @@
             width: fit-content;
             text-decoration: none;
             transition: 0.2s;
+            display: inline-block;
         }
 
-            .btn-tea:hover {
-                background-color: #219653;
-            }
+        .btn-tea:hover {
+            background-color: #219653;
+            color: #FFF;
+        }
 
         .btn-coffee {
             background-color: #4A5568;
-            color: #FFFFFF !important;
+            color: #FFFFFF;
             font-size: 13px;
             font-weight: 600;
             padding: 8px 26px;
@@ -68,11 +93,13 @@
             width: fit-content;
             text-decoration: none;
             transition: 0.2s;
+            display: inline-block;
         }
 
-            .btn-coffee:hover {
-                background-color: #2D3748;
-            }
+        .btn-coffee:hover {
+            background-color: #2D3748;
+            color: #FFF;
+        }
 
         /* Section Header */
         .section-header h2 {
@@ -87,7 +114,7 @@
             color: #718096;
         }
 
-        /* Dark Product Cards */
+        /* Featured Product Cards */
         .figma-card {
             background-color: #1F2833;
             border-radius: 12px;
@@ -96,15 +123,12 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
 
-            .figma-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            }
+        .figma-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
         .card-img-wrapper {
             position: relative;
@@ -112,11 +136,11 @@
             width: 100%;
         }
 
-            .card-img-wrapper img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .product-badge {
             position: absolute;
@@ -142,9 +166,6 @@
 
         .card-body-custom {
             padding: 16px 18px 20px 18px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
         }
 
         .product-name {
@@ -166,7 +187,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto;
         }
 
         .product-price {
@@ -190,52 +210,65 @@
             transition: all 0.2s ease;
         }
 
-            .btn-cart:hover {
-                background-color: #E5A824;
-                color: #1F2833;
-                border-color: #E5A824;
-            }
+        .btn-cart:hover {
+            background-color: #E5A824;
+            color: #1F2833;
+            border-color: #E5A824;
+        }
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- 1. Hero Banners Row (Tea & Coffee) -->
+
+    <!-- Hero Cards Section -->
     <div class="container my-5">
         <div class="row g-4">
-            <!-- Left: Tea Banner -->
+
+            <!-- Tea Card -->
             <div class="col-md-6">
-                <div class="hero-banner-card hero-banner-tea">
-                    <h1 class="hero-title">Tea</h1>
-                    <p class="hero-desc">Explore our selection of premium organic teas, hand-picked for vitality.</p>
-                    <a href='<%= ResolveUrl("~/Tea.aspx") %>' class="btn-tea">Shop Tea</a>
+                <div class="hero-banner-card">
+                    <div class="hero-img-wrapper">
+                        <img src="/images/T1.jpg" alt="Artisan Black Tea" />
+                    </div>
+                    <div class="hero-body-custom">
+                        <h1 class="hero-title">Tea</h1>
+                        <p class="hero-desc">Explore our selection of premium organic teas, hand-picked for vitality.</p>
+                        <a href="Tea.aspx" class="btn-tea">Shop Tea</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right: Coffee Banner -->
+            <!-- Coffee Card -->
             <div class="col-md-6">
-                <div class="hero-banner-card hero-banner-coffee">
-                    <h1 class="hero-title">Coffee</h1>
-                    <p class="hero-desc">Artisanal blends crafted for the perfect morning ritual.</p>
-                    <a href='<%= ResolveUrl("~/Coffee.aspx") %>' class="btn-coffee">Shop Coffee</a>
+                <div class="hero-banner-card">
+                    <div class="hero-img-wrapper">
+                        <img src="/images/C1.jpg" alt="Artisan Coffee" />
+                    </div>
+                    <div class="hero-body-custom">
+                        <h1 class="hero-title">Coffee</h1>
+                        <p class="hero-desc">Artisanal blends crafted for the perfect morning ritual.</p>
+                        <a href="Coffee.aspx" class="btn-coffee">Shop Coffee</a>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-    <!-- 2. Featured Products Section Header -->
+    <!-- Section Header -->
     <div class="container mt-5 mb-4 text-center section-header">
         <h2>Featured Products</h2>
         <p>Hand-selected for premium quality and taste.</p>
     </div>
 
-    <!-- 3. Featured Products Grid (Figma 4 Cards) -->
+    <!-- Featured Products Grid -->
     <div class="container mb-5 pb-4">
         <div class="row g-4">
-            <!-- Card 1: Artisan Black Tea -->
+
             <div class="col-lg-3 col-md-6">
                 <div class="figma-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400" alt="Artisan Black Tea" />
+                        <img src="/images/T1.jpg" alt="Artisan Black Tea" />
                         <span class="product-badge badge-organic">Organic</span>
                     </div>
                     <div class="card-body-custom">
@@ -249,11 +282,10 @@
                 </div>
             </div>
 
-            <!-- Card 2: Fresh Green Tea -->
             <div class="col-lg-3 col-md-6">
                 <div class="figma-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400" alt="Fresh Green Tea" />
+                        <img src="/images/T2.jpg" alt="Fresh Green Tea" />
                         <span class="product-badge badge-organic">Organic</span>
                     </div>
                     <div class="card-body-custom">
@@ -267,11 +299,10 @@
                 </div>
             </div>
 
-            <!-- Card 3: Hibiscus Herbal Tea -->
             <div class="col-lg-3 col-md-6">
                 <div class="figma-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400" alt="Hibiscus Herbal Tea" />
+                        <img src="/images/T3.jpg" alt="Hibiscus Herbal Tea" />
                         <span class="product-badge badge-caffeine-free">Caffeine Free</span>
                     </div>
                     <div class="card-body-custom">
@@ -285,11 +316,10 @@
                 </div>
             </div>
 
-            <!-- Card 4: Premium Latte -->
             <div class="col-lg-3 col-md-6">
                 <div class="figma-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400" alt="Premium Latte" />
+                        <img src="/images/C2.jpg" alt="Premium Latte" />
                     </div>
                     <div class="card-body-custom">
                         <div class="product-name">Premium Latte</div>
@@ -301,6 +331,8 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 </asp:Content>

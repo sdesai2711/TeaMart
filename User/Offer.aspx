@@ -8,6 +8,7 @@
             padding-bottom: 70px;
         }
 
+        /* Figma Big Orange Banner */
         .exclusive-hero-banner {
             background-color: #F06543;
             color: #FFFFFF;
@@ -30,8 +31,10 @@
                 font-size: 14px;
                 color: #FFE5DF;
                 margin: 0;
+                font-weight: 400;
             }
 
+        /* 4 Dark Figma Cards */
         .figma-offer-card {
             background-color: #1F2833;
             border-radius: 12px;
@@ -39,12 +42,13 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
             .figma-offer-card:hover {
                 transform: translateY(-6px);
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
             }
 
         .offer-card-img {
@@ -59,6 +63,7 @@
                 object-fit: cover;
             }
 
+        /* Circular Green Badge (Card 1) */
         .badge-circle-offer {
             position: absolute;
             top: 10px;
@@ -74,8 +79,12 @@
             justify-content: center;
             font-size: 9px;
             font-weight: 700;
+            line-height: 1.1;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
+        /* Yellow Badge (Card 3) */
         .badge-yellow-tag {
             position: absolute;
             top: 10px;
@@ -86,8 +95,10 @@
             font-weight: 800;
             padding: 3px 8px;
             border-radius: 4px;
+            text-transform: uppercase;
         }
 
+        /* Red Banner Tag (Card 4) */
         .badge-red-strip {
             position: absolute;
             bottom: 0;
@@ -99,6 +110,8 @@
             font-weight: 700;
             text-align: center;
             padding: 4px 0;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .offer-card-content {
@@ -113,6 +126,7 @@
             font-size: 13.5px;
             font-weight: 800;
             color: #FFFFFF;
+            letter-spacing: 0.5px;
             line-height: 1.4;
             min-height: 42px;
             margin-bottom: 12px;
@@ -127,6 +141,7 @@
             margin-bottom: 22px;
         }
 
+        /* Green Shop Now Button */
         .btn-shop-offer {
             background-color: #27AE60;
             color: #FFFFFF !important;
@@ -139,22 +154,36 @@
             width: 100%;
             margin-top: auto;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
+            border: none;
         }
+
+            .btn-shop-offer:hover {
+                background-color: #219653;
+            }
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="offer-page-bg">
         <div class="container pt-5">
+
+            <!-- Figma Header Banner -->
             <div class="exclusive-hero-banner">
                 <h1>Exclusive Offers</h1>
                 <p>Grab amazing deals on your favorite products before they're gone!</p>
             </div>
+
+            <!-- 4 Offer Cards Grid -->
             <div class="row g-4">
+
+                <!-- Card 1: 20% OFF -->
                 <div class="col-lg-3 col-md-6">
                     <div class="figma-offer-card">
                         <div class="offer-card-img">
-                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=450" alt="Offer" /><div class="badge-circle-offer">UP TO<br />
+                            <img src="/images/C2.jpg" alt="Coffee Latte" />
+                            <div class="badge-circle-offer">UP TO<br />
                                 50%</div>
                         </div>
                         <div class="offer-card-content">
@@ -164,10 +193,13 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Card 2: BUY 1 GET 1 FREE -->
                 <div class="col-lg-3 col-md-6">
                     <div class="figma-offer-card">
                         <div class="offer-card-img">
-                            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=450" alt="Offer" /></div>
+                            <img src="/images/T1.jpg" alt="Iced Tea Drinks" />
+                        </div>
                         <div class="offer-card-content">
                             <div class="offer-card-heading">Buy 1 Get 1 Free Organic Matcha</div>
                             <div class="offer-card-desc">Stock up on authentic ceremonial grade organic Matcha. Limited time offer!</div>
@@ -175,10 +207,13 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Card 3: NEW ARRIVAL -->
                 <div class="col-lg-3 col-md-6">
                     <div class="figma-offer-card">
                         <div class="offer-card-img">
-                            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=450" alt="Offer" /><div class="badge-yellow-tag">NEW!</div>
+                            <img src="/images/T2.jpg" alt="Green Tea Cup" />
+                            <div class="badge-yellow-tag">NEW!</div>
                         </div>
                         <div class="offer-card-content">
                             <div class="offer-card-heading">New Arrival Offer Single Origin Coffee</div>
@@ -187,19 +222,24 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Card 4: 15% OFF TEAPOTS -->
                 <div class="col-lg-3 col-md-6">
                     <div class="figma-offer-card">
                         <div class="offer-card-img">
-                            <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=450" alt="Offer" /><div class="badge-red-strip">SPRING SPECIAL</div>
+                            <img src="/images/T4.jpg" alt="Teapots & Mugs" />
+                            <div class="badge-red-strip">SPRING SPECIAL</div>
                         </div>
                         <div class="offer-card-content">
                             <div class="offer-card-heading">15% Off All Teapots &amp; Mugs</div>
                             <div class="offer-card-desc">Upgrade your brewing experience with our premium accessories.</div>
-                            <a href="Tea.aspx" class="btn-shop-offer">Shop Now</a>
+                            <a href="#" class="btn-shop-offer">Shop Now</a>
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
 </asp:Content>

@@ -90,7 +90,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="profile-page-bg">
         <div class="profile-wrapper">
-            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300" class="side-deco-img d-none d-md-block" alt="Tea" />
+            <img src="/images/T1.jpg" class="side-deco-img d-none d-md-block" alt="Tea" />
             <div class="profile-card">
                 <div class="profile-title">Update Profile</div>
                 <div class="row">
@@ -107,7 +107,7 @@
                 <input type="text" class="input-profile" value="123 Green Valley, Ahmedabad" />
                 <button type="button" class="btn-update-profile">Save Changes</button>
             </div>
-            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=300" class="side-deco-img d-none d-md-block" alt="Matcha" />
+            <img src="/images/T2.jpg" class="side-deco-img d-none d-md-block" alt="Matcha" />
         </div>
     </div>
 </asp:Content>

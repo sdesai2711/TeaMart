@@ -67,7 +67,7 @@
             <div class="cart-box">
                 <div class="cart-item-row">
                     <div class="d-flex align-items-center gap-3">
-                        <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=200" class="cart-item-img" alt="Assam Tea" />
+                        <img src="/images/T3.jpg" class="cart-item-img" alt="Assam Tea" />
                         <div>
                             <div class="cart-item-title">Assam CTC Black Tea</div>
                             <div class="cart-item-price">₹24.00</div>
